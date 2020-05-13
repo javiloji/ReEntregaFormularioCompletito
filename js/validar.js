@@ -123,10 +123,8 @@ validar = (function () {
                 expresiones.arrayDni[2][parseInt(dniNumero) % 23])) {
                 return "";
             }
-            else {
-                return expresiones.arrayDni[1];
+            return "La letra no corresponde con el dni";
 
-            }
         } catch{
             return expresiones.arrayDni[1];
         }
