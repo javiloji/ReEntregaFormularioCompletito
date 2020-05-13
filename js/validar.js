@@ -36,29 +36,37 @@ validar = (function () {
     // Comprueba que el numero sea correcto
 
     let comprobarNumero = function (numero) {
-        return (expresiones.arrayNumero[0].test(numero.trim()));
+        if(!expresiones.arrayNumero[0].test(numero.trim())){
+            return expresiones.arrayNumero[1];
+        }
+        return "";
     }
 
     // Comprueba si el checkBox esta activo
 
-    let comprobarCheckbox = function (id) {
-        return document.getElementById(id).checked;
+    let comprobarCheckbox = function (input) {
+        if(!input.checked){
+            return "Este campo debe estar seleccionado"
+        }
+        return "";
     }
 
     // Comprueba que el radio Button no quede vacio
 
-    let comprobarRadio = function (id1, id2, id3) {
+    let comprobarRadio = function (opciones, campoError1) {
+        let check = false;
 
-        if (document.getElementById(id1).checked) {
-            return true;
+        for (const i of opciones) {
+            if(!check && i.checked){
+                check = true;
+            }
         }
-        else if (document.getElementById(id2).checked) {
-            return true;
+        if (!check) {
+            campoError1.innerHTML = "Debes seleccionar algún campo";
         }
-        else if (document.getElementById(id3).checked) {
-            return true;
+        else{
+            campoError1.innerHTML = "";
         }
-        return false;
     }
 
     // Comprueba que la fecha sea correcto
@@ -125,15 +133,24 @@ validar = (function () {
     }
 
     let comprobarCorreo = function (correo) {
-        return (expresiones.arrayCorreo[0].test(correo.trim()));
+        if(!expresiones.arrayCorreo[0].test(correo.trim())){
+            return expresiones.arrayCorreo[1];
+        }
+        return "";
     }
 
     let comprobarTelefono = function (telefono) {
-        return (expresiones.arrayTelefono[0].test(telefono.trim()));
+        if(!expresiones.arrayTelefono[0].test(telefono.trim())){
+            return expresiones.arrayTelefono[1];
+        }
+        return "";    
     }
 
     let comprobarUrl = function (url) {
-        return (expresiones.arrayUrl[0].test(url.trim()));
+        if(!expresiones.arrayUrl[0].test(url.trim())){
+            return expresiones.arrayUrl[1];
+        }
+        return "";
     }
 
     return {
