@@ -44,7 +44,7 @@ validar = (function () {
 
     // Comprueba si el checkBox esta activo
 
-    let comprobarCheckbox = function (input) {
+    let comprobarCheckbox = function (input) { 
         if(!input.checked){
             return "Este campo debe estar seleccionado"
         }
