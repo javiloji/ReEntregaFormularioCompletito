@@ -17,7 +17,6 @@ validar = (function () {
         arrayTexto: [new RegExp("^[a-zA-Zá-úÁ-Ú0-9 ]+$"), "Se debe escribir un texto"],
         arrayNumero: [new RegExp("^[0-9 ]+$"), "Se debe escribir un número entero"],
         arrayFecha: [new RegExp("^([0-9]{2})(/{1}|-{1})([0-9]{2})/{1}|-{1}([0-9]{4})$"), "20/01/2020 o 20-01-2020"],
-        arrayFechaPaco: [new RegExp("^(\d{2})([/-])(\d{2})([/-])(\d{4})$"),"error"],
         arrayDni: [new RegExp("^([0-9]{8})[- ]?([a-zA-Z])$"), "12345678Z o 12345678-Z", "TRWAGMYFPDXBNJZSQVHLCKET"],
         arrayCorreo: [new RegExp("^[0-9a-zA-Z]+[@][0-9a-zA-Z]+[.][a-zA-Z]+$"), "Se debe poner el correo correctamente"],
         arrayTelefono: [new RegExp("^([+]?[0-9]?[0-9]?[0-9]?[0-9]?)?[ ]?[0-9]{3}[ ]?[0-9]{3}[ ]?[0-9]{3}[ ]?$"), "Número no válido"],
@@ -54,7 +53,7 @@ validar = (function () {
 
     // Comprueba que el radio Button no quede vacio
 
-    let comprobarRadio = function (opciones, campoError1) {
+    let comprobarRadio = function (opciones, campoError) {
         let check = false;
 
         for (const i of opciones) {
@@ -63,10 +62,28 @@ validar = (function () {
             }
         }
         if (!check) {
-            campoError1.innerHTML = "Debes seleccionar algún campo";
+            campoError.innerHTML = "Debes seleccionar algún campo";
         }
         else{
-            campoError1.innerHTML = "";
+            campoError.innerHTML = "";
+        }
+    }
+
+    // Comprueba que el radio Button no quede vacio
+
+    let comprobarSelect = function (opciones,campoError) {
+        let check = true;
+
+        for (const i of opciones) {
+            if(opciones[0].selected){
+                check = false;
+            }
+        }
+        if (!check) {
+            campoError.innerHTML = "Debes seleccionar algún campo";
+        }
+        else{
+            campoError.innerHTML = "";
         }
     }
 
@@ -157,6 +174,7 @@ validar = (function () {
         comprobarNumero: comprobarNumero,
         comprobarCheckbox: comprobarCheckbox,
         comprobarRadio: comprobarRadio,
+        comprobarSelect: comprobarSelect,
         comprobarCorreo: comprobarCorreo,
         comprobarDni: comprobarDni,
         comprobarFechaNacimiento: comprobarFechaNacimiento,

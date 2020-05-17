@@ -7,10 +7,6 @@
  * 
 */
 
-    let radio1 = document.getElementById("radio1");
-    let radio2 = document.getElementById("radio2");
-    let radio3 = document.getElementById("radio3");
-    let errorRadio = document.getElementById("errorRadioButton");
 
     // Funciones para chequear
 
@@ -46,6 +42,10 @@
         validar.comprobarRadio(document.getElementsByName("radio1"),document.getElementById("errorRadioButton"));
     }
 
+    function chequeaSelect (){
+        validar.comprobarSelect(document.getElementById("select"),document.getElementById("errorSelect"));
+    }
+
     function chequeaCheckbox () {
         this.nextSibling.nextSibling.innerHTML = validar.comprobarCheckbox(document.getElementById("checkbox"));
     }
@@ -58,6 +58,8 @@
         for (const i of document.getElementsByName("radio1")) {
             i.addEventListener("blur",chequeaRadio);
         }
+
+        document.getElementById("select").addEventListener("blur",chequeaSelect);
 
         document.getElementById("texto").addEventListener("blur", chequeaTexto);
         document.getElementById("checkbox").addEventListener("blur",chequeaCheckbox);
@@ -78,6 +80,8 @@
             for(input of inputs) {
                 input.dispatchEvent(new Event("blur"));
             }
+
+            document.getElementById("select").dispatchEvent(new Event("blur"));
             
             for (const i of document.getElementsByTagName("span")) {
                 if(i.innerHTML==""){
