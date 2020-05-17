@@ -15,8 +15,8 @@ validar = (function () {
 
     let expresiones = {
         arrayTexto: [new RegExp("^[a-zA-Zá-úÁ-Ú0-9 ]+$"), "Se debe escribir un texto"],
-        arrayNumero: [new RegExp("^[0-9 ]+$"), "Se debe escribir un número entero"],
-        arrayFecha: [new RegExp("^([0-9]{2})(/{1}|-{1})([0-9]{2})/{1}|-{1}([0-9]{4})$"), "20/01/2020 o 20-01-2020"],
+        arrayNumero: [new RegExp("^[0-9]+$"), "Se debe escribir un número entero"],
+        arrayFecha: [new RegExp("^([0-9]{2})([/-])([0-9]{2})([/-])([0-9]{4})$")],
         arrayDni: [new RegExp("^([0-9]{8})[- ]?([a-zA-Z])$"), "12345678Z o 12345678-Z", "TRWAGMYFPDXBNJZSQVHLCKET"],
         arrayCorreo: [new RegExp("^[0-9a-zA-Z]+[@][0-9a-zA-Z]+[.][a-zA-Z]+$"), "Se debe poner el correo correctamente"],
         arrayTelefono: [new RegExp("^([+]?[0-9]?[0-9]?[0-9]?[0-9]?)?[ ]?[0-9]{3}[ ]?[0-9]{3}[ ]?[0-9]{3}[ ]?$"), "Número no válido"],
@@ -87,47 +87,28 @@ validar = (function () {
         }
     }
 
-    // Comprueba que la fecha sea correcto
+    function comprobarFechaNacimiento (fecha){
 
-    let comprobarFechaNacimiento = function (fechaNacimiento) {
-        try {
-            let bisiesto = false;
-            let maximoDiasMes;
-            let [, dia,, mes, anno] = expresiones.arrayFecha[0].exec(fechaNacimiento);
-
-            dia = parseInt(dia);
-            mes = parseInt(mes);
-            anno = parseInt(fechaNacimiento.slice(6,fechaNacimiento.length));
-
-            if ((anno % 4 == 0 && anno % 100 != 0) || anno % 400 == 0) {
-                bisiesto = true;
-            }
-            
-            switch (mes) {
-                case 1, 3, 5, 7, 8, 10, 12:
-                    maximoDiasMes = 31;
-                    break;
-                case 4, 6, 9, 11:
-                    maximoDiasMes = 30;
-                    break;
-                default:
-                    if (!bisiesto) {
-                        maximoDiasMes = 28;
-                        break;
-                    }
-                    maximoDiasMes = 29;
-                    break;
-            }
-
-            if ((expresiones.arrayFecha[0].test(fechaNacimiento.trim()) && dia <= maximoDiasMes && mes <= 12)) {
-                return "";
-            }
-            else {
-                return expresiones.arrayFecha[1];
-            }
-        } catch{
-            return expresiones.arrayFecha[1];
+        let fechaDestructuring = expresiones.arrayFecha[0].exec(fecha);
+        
+        if(fecha == ""){
+            return "El campo no puede quedar vacio";
         }
+        if(fechaDestructuring == null){
+            return "Formato incorrecto, 'DD-MM-AAAA'";
+        }
+
+        let date = new Date(`${fechaDestructuring[5]}/${fechaDestructuring[3]}/${fechaDestructuring[1]}`);
+        
+        if(fechaDestructuring[2] != fechaDestructuring[4]){
+            return "El separador debe de ser el mismo para separar dia/mes y mes/año";
+        }
+
+        if(Number(fechaDestructuring[1]) != date.getDate() || Number(fechaDestructuring[3]) != date.getMonth() +1 || Number(fechaDestructuring[5]) != date.getFullYear()){
+            return "La fecha no es válida";
+        }  
+
+        return "";
     }
 
     // Comprueba que el Dni sea correcto
