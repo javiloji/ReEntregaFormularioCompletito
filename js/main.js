@@ -73,7 +73,7 @@
 
         // Boton de sumbit
 
-        document.getElementById("enviar").addEventListener("click", function (event) {
+        document.getElementsByTagName("form")[0].addEventListener("submit", function (event) {
             
             let inputs = document.getElementsByTagName("input");
 
