@@ -50,26 +50,36 @@
         this.nextSibling.nextSibling.innerHTML = validar.comprobarCheckbox(document.getElementById("checkbox"));
     }
 
+    let funciones = {
+        texto: chequeaTexto,
+        numero: chequeaNumero,
+        correo: chequeaCorreo,
+        fecha: chequeaFecha,
+        dni : chequeaDni,
+        telefono: chequeaTelefono,
+        url: chequeaUrl,
+        checkbox: chequeaCheckbox,
+    }
+
     let inicio = () => {
 
-        // Escuchadores
+        let inputs = document.getElementsByTagName("input");
+
+        // Recorro todos los inputs para añadirle el escuchador a cada uno
+
+        for (input of inputs) {
+            input.addEventListener("blur", funciones[input.id]);
+        }
+
 
         // Utilizo el for para recorrer todos los elementos del radioButton
         for (const i of document.getElementsByName("radio1")) {
             i.addEventListener("blur",chequeaRadio);
         }
 
+        // Escuchador del select
+
         document.getElementById("select").addEventListener("blur",chequeaSelect);
-
-        document.getElementById("texto").addEventListener("blur", chequeaTexto);
-        document.getElementById("checkbox").addEventListener("blur",chequeaCheckbox);
-        document.getElementById("numero").addEventListener("blur", chequeaNumero);
-        document.getElementById("correo").addEventListener("blur",chequeaCorreo);
-        document.getElementById("fecha").addEventListener("blur", chequeaFecha);
-        document.getElementById("dni").addEventListener("blur", chequeaDni);
-        document.getElementById("telefono").addEventListener("blur",chequeaTelefono);
-        document.getElementById("url").addEventListener("blur",chequeaUrl);
-
 
         // Boton de sumbit
 
@@ -96,6 +106,30 @@
                 }
             }
         });
+
+        // Boton de rellenar
+
+        document.getElementById("rellenar").addEventListener("click", function (){
+            document.getElementById("texto").value = "Hola";
+            document.getElementById("numero").value = "98";
+            document.getElementById("correo").value = "javiLoji@gmail.com";
+            document.getElementById("dni").value = "12345678Z";
+            document.getElementById("fecha").value = "29/02/2000";
+            document.getElementById("telefono").value = "658542122";
+            document.getElementById("url").value = "https://amazon.com";
+        });
+
+        // Boton de vaciar
+        
+        document.getElementById("vaciar").addEventListener("click",function (){
+            document.getElementById("formulario").reset();
+            spans = document.getElementsByTagName("span");
+
+            for (const span of spans) {
+                span.innerHTML = "";
+            }
+        })
+        
 
     }
 
