@@ -87,6 +87,8 @@
             
             let inputs = document.getElementsByTagName("input");
 
+            event.preventDefault();
+            
             for(input of inputs) {
                 input.dispatchEvent(new Event("blur"));
             }
@@ -120,7 +122,7 @@
         });
 
         // Boton de vaciar
-        
+
         document.getElementById("vaciar").addEventListener("click",function (){
             document.getElementById("formulario").reset();
             spans = document.getElementsByTagName("span");
