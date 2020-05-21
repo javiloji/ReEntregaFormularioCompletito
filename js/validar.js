@@ -118,8 +118,7 @@ validar = (function () {
         try {
             let [, dniNumero, dniLetra] = expresiones.arrayDni[0].exec(dniCompleto);
 
-            if (expresiones.arrayDni[0].exec(dniCompleto) != null && (dniLetra.toUpperCase() ==
-                expresiones.arrayDni[2][parseInt(dniNumero) % 23])) {
+            if (dniLetra.toUpperCase() == expresiones.arrayDni[2][parseInt(dniNumero) % 23]) {
                 return "";
             }
             return "La letra no corresponde con el dni";
