@@ -21,7 +21,6 @@ validar = (function () {
         arrayCorreo: [new RegExp("^[0-9a-zA-Z]+[@][0-9a-zA-Z]+[.][a-zA-Z]+$"), "Se debe poner el correo correctamente"],
         arrayTelefono: [new RegExp("^([+]?[0-9]?[0-9]?[0-9]?[0-9]?)?[ ]?[0-9]{3}[ ]?[0-9]{3}[ ]?[0-9]{3}[ ]?$"), "Número no válido"],
         arrayUrl: [new RegExp("^(http[s]?[:][/][/])?(www[.])?[a-zA-Z]+[.][a-zA-Z]+([/][a-zA-Z0-9]+)*$"), "Se debe poner la url correctamente"],
-
     }
 
     // Comprueba que el nombre sea correcto
@@ -54,32 +53,19 @@ validar = (function () {
     // Comprueba que el radio Button no quede vacio
 
     let comprobarRadio = function (opciones, campoError) {
-        let check = false;
 
-        for (const i of opciones) {
-            if (!check && i.checked) {
-                check = true;
-            }
+        if(!Array.from(opciones).some(elemento => (elemento.checked))){
+            campoError.innerHTML = "Debes seleccionar alguna opción";
         }
-        if (!check) {
-            campoError.innerHTML = "Debes seleccionar algún campo";
-        }
-        else {
+        else{
             campoError.innerHTML = "";
         }
     }
 
     // Comprueba que el radio Button no quede vacio
 
-    let comprobarSelect = function (opciones, campoError) {
-        let check = true;
-
-        for (const i of opciones) {
-            if (opciones[0].selected) {
-                check = false;
-            }
-        }
-        if (!check) {
+    let comprobarSelect = function (opcion,campoError) {
+        if (opcion == "") {
             campoError.innerHTML = "Debes seleccionar algún campo";
         }
         else {

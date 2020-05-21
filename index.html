@@ -18,71 +18,96 @@
     <h1>Formulario Completito</h1>
     <h2>Javier Lopera Jiménez</h2><br>
 
-    <button id="rellenar">Rellenar</button>
-    <button id="vaciar">Vaciar</button>
-
     <form id="formulario">
-        <label for="texto">Obligatoriedad texto: </label>
-        <input id="texto" type="text">
-        <span id="errorTexto"></span>
+        <div>
+            <label for="texto">Obligatoriedad texto: </label>
+            <input id="texto" type="text">
+            <span id="errorTexto"></span>
+        </div>
 
-        <label for="checkbox">Obligatoriedad checkbox: </label>
-        <input type="checkbox" id="checkbox" value="first_checkbox">
-        <span id="errorCheckbox" ></span>
+        <div>
+            <label for="checkbox">Obligatoriedad checkbox: </label>
+            <input type="checkbox" id="checkbox" value="first_checkbox">
+            <span id="errorCheckbox"></span>
+        </div>
 
-        <label>Obligatoriedad radio Button:</label><label></label><label></label>
+        <div>
+            <label>Obligatoriedad radio Button:</label>
 
-        <label for="radio1">Opción 1</label>
-        <input type="radio" id="radio1" name="radio1" value="Opción 1" >
-        <span id="errorRadioButton" ></span>
+            <div>
+                <label for="radio1">Opción 1</label>
+                <input type="radio" id="radio1" name="radio" value="Opción 1">
+            </div>
 
-        <label for="radio2">Opción 2</label>
-        <input type="radio" id="radio2" name="radio1" value="Opción 2">
-        <span id="errorRadioButton2" ></span>
+            <div>
+                <label for="radio2">Opción 2</label>
+                <input type="radio" id="radio2" name="radio" value="Opción 2">
+            </div>
 
-        <label for="radio4">Opción 4</label>
-        <input type="radio" id="radio4" name="radio1" value="Opción 4">
-        <span id="errorRadioButton4" ></span>
+            <div>
+                <label for="radio4">Opción 4</label>
+                <input type="radio" id="radio4" name="radio" value="Opción 4">
+            </div>
 
-        <label for="radio3">Opción 3</label>
-        <input type="radio" id="radio3" name="radio1" value="Opción 3">
-        <span id="errorRadioButton3" ></span>
-        
-        <label for="select">Select: </label>
-        <select id="select" name="select">
-            <option value="value0">Elija una opción</option> 
-            <option value="value1">Value 1</option> 
-            <option value="value2">Value 2</option>
-            <option value="value3">Value 3</option>
-        </select>
-        <span id="errorSelect" ></span>
-        
-        <label for="numero">Obligatoriedad Número: </label>
-        <input id="numero" type="text">
-        <span id="errorNumero" ></span>
+            <div>
+                <label for="radio3">Opción 3</label>
+                <input type="radio" id="radio3" name="radio" value="Opción 3">
+            </div>
+            <span id="errorRadioButton"></span>
+        </div>
 
-        <label for="correo">Dirección de correo: </label>
-        <input id="correo" type="text">
-        <span id="errorCorreo" ></span>
+        <div>
+            <label for="select">Select: </label>
+            <select id="select" name="select">
+                <option value="">Elija una opción</option>
+                <option value="value1">Value 1</option>
+                <option value="value2">Value 2</option>
+                <option value="value3">Value 3</option>
+            </select>
+            <span id="errorSelect"></span>
+        </div>
 
-        <label for="dni">Dni: </label>
-        <input id="dni" type="text">
-        <span id="errorDni" ></span>
+        <div>
+            <label for="numero">Obligatoriedad Número: </label>
+            <input id="numero" type="text">
+            <span id="errorNumero"></span>
+        </div>
 
-        <label for="fecha">Fecha: </label>
-        <input id="fecha" type="text">
-        <span id="errorFecha" ></span>
+        <div>
+            <label for="correo">Dirección de correo: </label>
+            <input id="correo" type="text">
+            <span id="errorCorreo"></span>
+        </div>
 
-        <label for="telefono">Número Teléfono: </label>
-        <input id="telefono" type="text">
-        <span id="errorTelefono" ></span>
+        <div>
+            <label for="dni">Dni: </label>
+            <input id="dni" type="text">
+            <span id="errorDni"></span>
+        </div>
 
-        <label for="url">URL: </label>
-        <input id="url" type="text">
-        <span id="errorUrl" ></span>
+        <div>
+            <label for="fecha">Fecha: </label>
+            <input id="fecha" type="text">
+            <span id="errorFecha"></span>
+        </div>
 
-        <input id="enviar" type="submit"><br>
+        <div>
+            <label for="telefono">Número Teléfono: </label>
+            <input id="telefono" type="text">
+            <span id="errorTelefono"></span>
+        </div>
 
+        <div>
+            <label for="url">URL: </label>
+            <input id="url" type="text">
+            <span id="errorUrl"></span>
+        </div>
+
+        <div id="botones">
+            <input id="enviar" type="submit">
+            <button id="rellenar">Rellenar</button>
+            <input id="vaciar" value="Limpiar" type="reset">
+        </div>
     </form>
 
 </body>

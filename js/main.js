@@ -39,11 +39,12 @@
     }
 
     function chequeaRadio (){
-        validar.comprobarRadio(document.getElementsByName("radio1"),document.getElementById("errorRadioButton"));
+        validar.comprobarRadio(document.getElementsByName("radio"),document.getElementById("errorRadioButton"));
     }
 
     function chequeaSelect (){
-        validar.comprobarSelect(document.getElementById("select"),document.getElementById("errorSelect"));
+        validar.comprobarSelect(document.getElementById("select").value,document.getElementById("errorSelect"));
+        // validar.comprobarSelect(document.getElementById("select"),document.getElementById("errorSelect"));
     }
 
     function chequeaCheckbox () {
@@ -73,7 +74,7 @@
 
 
         // Utilizo el for para recorrer todos los elementos del radioButton
-        for (const i of document.getElementsByName("radio1")) {
+        for (const i of document.getElementsByName("radio")) {
             i.addEventListener("blur",chequeaRadio);
         }
 
@@ -124,7 +125,7 @@
         // Boton de vaciar
 
         document.getElementById("vaciar").addEventListener("click",function (){
-            document.getElementById("formulario").reset();
+
             spans = document.getElementsByTagName("span");
 
             for (const span of spans) {
