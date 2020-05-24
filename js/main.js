@@ -126,7 +126,7 @@
 
         document.getElementById("formulario").addEventListener("reset",function (){
 
-            spans = document.getElementsByTagName("span");
+            let spans = document.getElementsByTagName("span");
 
             for (const span of spans) {
                 span.innerHTML = "";
