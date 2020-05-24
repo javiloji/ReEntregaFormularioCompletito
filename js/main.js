@@ -87,8 +87,6 @@
 
         document.getElementsByTagName("form")[0].addEventListener("submit", function (event) {
 
-            event.preventDefault();
-
             for (input of inputs) {
                 input.dispatchEvent(new Event("blur"));
             }
