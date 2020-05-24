@@ -96,14 +96,20 @@
 
             document.getElementById("select").dispatchEvent(new Event("blur"));
 
-            for (const i of document.getElementsByTagName("span")) {
+            Array.from(document.getElementsByTagName("span")).every(i => {
                 if (i.innerHTML != "") {
-
                     event.preventDefault();
-                    i.previousSibling.previousSibling.focus();
-                    break;
+                    if(i.previousSibling.previousSibling.tagName=="DIV"){
+                        i.previousSibling.previousSibling.lastElementChild.focus();
+                    }
+                    else{
+                        i.previousSibling.previousSibling.focus();
+                        console.log(i.previousSibling.previousSibling);
+                    }
+                    return false;
                 }
-            }
+                return true;
+            })
         });
 
         // Boton de rellenar
