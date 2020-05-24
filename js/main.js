@@ -96,7 +96,7 @@
 
             document.getElementById("select").dispatchEvent(new Event("blur"));
 
-            Array.from(document.getElementsByTagName("span")).every(i => {
+            Array.from(document.getElementsByTagName("span")).every(i => { 
                 if (i.innerHTML != "") {
                     event.preventDefault();
                     if(i.previousSibling.previousSibling.tagName=="DIV"){
