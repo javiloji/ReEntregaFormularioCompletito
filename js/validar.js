@@ -67,7 +67,7 @@ validar = (function () {
 
         try {
 
-            let [, dia, , mes, anno] = expresiones.arrayFecha[0].exec(fecha);
+            let [, dia, , mes, anno] = expresiones.arrayFecha[0].exec(fecha.trim());
 
             let date = new Date(`${anno}/${mes}/${dia}`);
 
@@ -90,7 +90,7 @@ validar = (function () {
     let comprobarDni = function (dniCompleto) {
 
         try {
-            let [, dniNumero, dniLetra] = expresiones.arrayDni[0].exec(dniCompleto);
+            let [, dniNumero, dniLetra] = expresiones.arrayDni[0].exec(dniCompleto.trim());
 
             if (dniLetra.toUpperCase() == expresiones.arrayDni[2][parseInt(dniNumero) % 23]) {
                 return "";
