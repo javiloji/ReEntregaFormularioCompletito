@@ -112,7 +112,7 @@
 
         // Boton de rellenar
 
-        document.getElementById("rellenar").addEventListener("click", function (){
+        document.getElementById("rellenar").addEventListener("click", function (event){
             document.getElementById("texto").value = "Hola";
             document.getElementById("numero").value = "98";
             document.getElementById("correo").value = "javiLoji@gmail.com";
@@ -120,6 +120,10 @@
             document.getElementById("fecha").value = "29/02/2000";
             document.getElementById("telefono").value = "658542122";
             document.getElementById("url").value = "https://amazon.com";
+
+            // Uso preventDefault para evirar el submit en el boton rellenar
+            event.preventDefault();
+
         });
 
         // Boton de vaciar
