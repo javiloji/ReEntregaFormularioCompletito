@@ -11,11 +11,13 @@
     // Funciones para chequear
 
     function chequeaTexto() {
-        this.nextSibling.nextSibling.innerHTML = validar.comprobarTexto(this.value);
+        this.nextSibling.nextSibling.innerHTML = validar.comprobarCampo(this.value,validar.expresiones.arrayTexto);
+
+        // this.nextSibling.nextSibling.innerHTML = validar.comprobarTexto(this.value);
     }
 
     function chequeaNumero() {
-        this.nextSibling.nextSibling.innerHTML = validar.comprobarNumero(this.value);
+        this.nextSibling.nextSibling.innerHTML = validar.comprobarCampo(this.value,validar.expresiones.arrayNumero);
     }
 
     function chequeaFecha() {
@@ -27,15 +29,15 @@
     }
 
     function chequeaCorreo() {
-        this.nextSibling.nextSibling.innerHTML = validar.comprobarCorreo(this.value);
+        this.nextSibling.nextSibling.innerHTML = validar.comprobarCampo(this.value,validar.expresiones.arrayCorreo);
     }
 
     function chequeaTelefono() {
-        this.nextSibling.nextSibling.innerHTML = validar.comprobarTelefono(this.value);
+        this.nextSibling.nextSibling.innerHTML = validar.comprobarCampo(this.value,validar.expresiones.arrayTelefono);
     }
 
     function chequeaUrl() {
-        this.nextSibling.nextSibling.innerHTML = validar.comprobarUrl(this.value);
+        this.nextSibling.nextSibling.innerHTML = validar.comprobarCampo(this.value,validar.expresiones.arrayUrl);
     }
 
     function chequeaRadio() {

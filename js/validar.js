@@ -23,21 +23,11 @@ validar = (function () {
         arrayUrl: [new RegExp("^(http[s]?[:][/][/])?(www[.])?[a-zA-Z]+[.][a-zA-Z]+([/][a-zA-Z0-9]+)*$"), "Se debe poner la url correctamente"],
     }
 
-    // Comprueba que el nombre sea correcto
+    // Comprueba que el campo sea correcto
 
-    let comprobarTexto = function (texto) {
-
-        if (!expresiones.arrayTexto[0].test(texto.trim()))
-            return expresiones.arrayTexto[1];
-        return "";
-    }
-
-    // Comprueba que el numero sea correcto
-
-    let comprobarNumero = function (numero) {
-        if (!expresiones.arrayNumero[0].test(numero.trim())) {
-            return expresiones.arrayNumero[1];
-        }
+    let comprobarCampo = function (textoIntroducido,array){
+        if (!array[0].test(textoIntroducido.trim()))
+            return array[1];
         return "";
     }
 
@@ -112,38 +102,13 @@ validar = (function () {
         }
     }
 
-    let comprobarCorreo = function (correo) {
-        if (!expresiones.arrayCorreo[0].test(correo.trim())) {
-            return expresiones.arrayCorreo[1];
-        }
-        return "";
-    }
-
-    let comprobarTelefono = function (telefono) {
-        if (!expresiones.arrayTelefono[0].test(telefono.trim())) {
-            return expresiones.arrayTelefono[1];
-        }
-        return "";
-    }
-
-    let comprobarUrl = function (url) {
-        if (!expresiones.arrayUrl[0].test(url.trim())) {
-            return expresiones.arrayUrl[1];
-        }
-        return "";
-    }
-
     return {
-        comprobarTexto: comprobarTexto,
-        comprobarNumero: comprobarNumero,
+        comprobarCampo: comprobarCampo,
         comprobarCheckbox: comprobarCheckbox,
         comprobarRadio: comprobarRadio,
         comprobarSelect: comprobarSelect,
-        comprobarCorreo: comprobarCorreo,
         comprobarDni: comprobarDni,
         comprobarFechaNacimiento: comprobarFechaNacimiento,
-        comprobarTelefono: comprobarTelefono,
-        comprobarUrl: comprobarUrl,
         expresiones: expresiones
     }
 })();
