@@ -124,7 +124,7 @@
 
         // Boton de vaciar
 
-        document.getElementById("vaciar").addEventListener("click",function (){
+        document.getElementById("formulario").addEventListener("reset",function (){
 
             spans = document.getElementsByTagName("span");
 
