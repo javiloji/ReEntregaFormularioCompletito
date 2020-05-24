@@ -64,6 +64,7 @@
 
     let inicio = () => {
 
+        let spans = document.getElementsByTagName("span");
         let inputs = document.getElementsByTagName("input");
 
         // Recorro todos los inputs para añadirle el escuchador a cada uno
@@ -86,8 +87,6 @@
 
         document.getElementsByTagName("form")[0].addEventListener("submit", function (event) {
 
-            let inputs = document.getElementsByTagName("input");
-
             event.preventDefault();
 
             for (input of inputs) {
@@ -96,7 +95,7 @@
 
             document.getElementById("select").dispatchEvent(new Event("blur"));
 
-            Array.from(document.getElementsByTagName("span")).every(i => { 
+            Array.from(spans).every(i => { 
                 if (i.innerHTML != "") {
                     event.preventDefault();
                     if(i.previousSibling.previousSibling.tagName=="DIV"){
@@ -104,7 +103,6 @@
                     }
                     else{
                         i.previousSibling.previousSibling.focus();
-                        console.log(i.previousSibling.previousSibling);
                     }
                     return false;
                 }
@@ -131,8 +129,6 @@
         // Boton de vaciar
 
         document.getElementById("formulario").addEventListener("reset", function () {
-
-            let spans = document.getElementsByTagName("span");
 
             for (const span of spans) {
                 span.innerHTML = "";
